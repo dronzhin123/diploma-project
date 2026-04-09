@@ -25,8 +25,9 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public User getUser(Long id) {
-        return userRepository.findById(id).orElseThrow(RuntimeException::new);
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(RuntimeException::new);
     }
 
 }

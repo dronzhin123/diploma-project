@@ -28,15 +28,15 @@ public class UserController {
     public UserDto createUser(@RequestBody UserCreateDto dto) {
         User user = userService.createUser(
                 dto.firstname(), dto.lastname(),
-                dto.phoneNumber(), dto.email()
+                dto.email(), dto.phoneNumber()
         );
         return userMapper.toUserDto(user);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUser(@PathVariable Long id) {
-        User user = userService.getUser(id);
+    public UserDto getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
         return userMapper.toUserDto(user);
     }
 
