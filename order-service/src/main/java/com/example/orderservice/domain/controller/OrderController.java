@@ -5,7 +5,6 @@ import com.example.orderservice.domain.dto.OrderDto;
 import com.example.orderservice.domain.entity.Order;
 import com.example.orderservice.domain.mapper.OrderMapper;
 import com.example.orderservice.domain.service.OrderService;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,33 +37,13 @@ public class OrderController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public OrderDto getById(@PathVariable Long id) {
-        return orderMapper.toOrderDto(orderService.getById(id));
-    }
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<OrderDto> getAll() {
-        return orderService.getAll().stream()
-                .map(orderMapper::toOrderDto)
-                .toList();
+    public OrderDto getOrder(@PathVariable Long id) {
+        return orderMapper.toOrderDto(orderService.getOrder(id));
     }
 
     @PostMapping("/{id}/cancel")
     @ResponseStatus(HttpStatus.OK)
-    public OrderDto cancel(@PathVariable Long id) {
-        return orderMapper.toOrderDto(orderService.cancel(id));
-    }
-
-    @PostMapping("/{id}/confirm")
-    @ResponseStatus(HttpStatus.OK)
-    public OrderDto confirm(@PathVariable Long id) {
-        return orderMapper.toOrderDto(orderService.confirm(id));
-    }
-
-    @PostMapping("/{id}/complete")
-    @ResponseStatus(HttpStatus.OK)
-    public OrderDto complete(@PathVariable Long id) {
-        return orderMapper.toOrderDto(orderService.complete(id));
+    public OrderDto cancelOrder(@PathVariable Long id) {
+        return orderMapper.toOrderDto(orderService.cancelOrder(id));
     }
 }
