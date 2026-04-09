@@ -55,4 +55,16 @@ public class OrderController {
     public OrderDto cancel(@PathVariable Long id) {
         return orderMapper.toOrderDto(orderService.cancel(id));
     }
+
+    @PostMapping("/{id}/confirm")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderDto confirm(@PathVariable Long id) {
+        return orderMapper.toOrderDto(orderService.confirm(id));
+    }
+
+    @PostMapping("/{id}/complete")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderDto complete(@PathVariable Long id) {
+        return orderMapper.toOrderDto(orderService.complete(id));
+    }
 }
