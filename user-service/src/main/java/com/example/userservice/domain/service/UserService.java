@@ -17,8 +17,8 @@ public class UserService {
         User user = User.builder()
                 .firstname(firstname)
                 .lastname(lastname)
-                .phoneNumber(phoneNumber)
                 .email(email)
+                .phoneNumber(phoneNumber)
                 .build();
 
         return userRepository.save(user);

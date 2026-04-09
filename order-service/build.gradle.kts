@@ -29,7 +29,3 @@ dependencies {
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.0")
 	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 }
-
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
