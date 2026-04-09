@@ -17,16 +17,17 @@ public class UserService {
         User user = User.builder()
                 .firstname(firstname)
                 .lastname(lastname)
-                .phoneNumber(phoneNumber)
                 .email(email)
+                .phoneNumber(phoneNumber)
                 .build();
 
         return userRepository.save(user);
     }
 
     @Transactional(readOnly = true)
-    public User getUser(Long id) {
-        return userRepository.findById(id).orElseThrow(RuntimeException::new);
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(RuntimeException::new);
     }
 
 }
